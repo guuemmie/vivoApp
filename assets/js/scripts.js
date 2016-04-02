@@ -15,7 +15,7 @@ if(window.localStorage.getItem("filtros")){
 	filtros = window.localStorage.getItem("filtros");
 }
 
-$("#logoVivo").fadeIn(2000,function(){$(this).fadeOut(2000,function(){layout();});});
+$("#logoVivo").fadeIn(2,function(){$(this).fadeOut(2,function(){layout();});});
 function layout(){
 	$('.linhaNome').slideDown(1000,function(){
 		$('.entrada').fadeIn(1000);
@@ -29,7 +29,10 @@ function inicio(){
 			return true;
 		}
 	}
-	iniciarInformacao();
+	$('#conteudo').fadeOut('fast',function(){
+		iniciarInformacao();
+	})
+	
 }
 function Lista(campoDestino,msg){
 	$.ajax({
@@ -71,5 +74,31 @@ function reiniciarFiltro(){
 	inicio();
 }
 function iniciarInformacao(){
-	$('#conteudo').html('<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">INICIO DO GRAFICO</button></div></div>').fadeIn('slow');
+	$('#conteudo').html('<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">FILTROS</button></div></div><div class="row"><div class="col-xs-12"> <div id="donut_single"></div></div></div>').fadeIn('slow');
+	google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Effort', 'Amount given'],
+          ['My all',     50],
+          ['My sal',     50]
+        ]);
+
+        var options = {
+          pieHole: 0.5,
+          pieSliceTextStyle: {
+            color: '#ffffff',
+          },
+          backgroundColor: 'transparent',
+          slices: {
+            0: { color: '#0066cb' },
+            1: { color: 'transparent' }
+          },
+          legend: 'none'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
+        chart.draw(data, options);
+      }
 }
