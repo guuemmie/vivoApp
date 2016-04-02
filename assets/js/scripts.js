@@ -5,13 +5,15 @@ var msg = new Array('Selecione o segmento','Selecione a pirâmide','Selecione o 
 var segmento_usuario='null';
 var piramide_usuario='null';
 var grupo_usuario='null';
-var filtros = '0';
+var filtros = 'nda';
 
 
 var segmento_usuario = window.localStorage.getItem("segmento_usuario");
 var piramide_usuario = window.localStorage.getItem("piramide_usuario");
 var grupo_usuario = window.localStorage.getItem("grupo_usuario");
-var filtros = window.localStorage.getItem("filtros");
+if(window.localStorage.getItem("filtros")){
+	filtros = window.localStorage.getItem("filtros");
+}
 
 $("#logoVivo").fadeIn(2000,function(){$(this).fadeOut(2000,function(){layout();});});
 function layout(){
@@ -59,12 +61,12 @@ function reiniciarFiltro(){
 	segmento_usuario='null';
 	piramide_usuario='null';
 	grupo_usuario='null';
-	filtros = '0';
+	filtros = 'nda';
 
 	window.localStorage.setItem('segmento_usuario', 'null');
 	window.localStorage.setItem('piramide_usuario', 'null');
 	window.localStorage.setItem('grupo_usuario', 'null');
-	window.localStorage.setItem('filtros', '0');
+	window.localStorage.setItem('filtros', 'nda');
 
 	inicio();
 }

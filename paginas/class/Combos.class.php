@@ -7,8 +7,9 @@ class Combos extends Conexao{
 	}
 	private function getCombo($nomeCampoDestino){
 		$filtros=self::$filtros;
-		if($filtros!='0'){
-			$where=' where ' . substr($filtros,5);
+		echo $filtros . '--';
+		if($filtros!='nda'){
+			$where=' where ' . substr($filtros,7);
 		}else{
 			$where='';
 		}
