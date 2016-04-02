@@ -13,7 +13,7 @@ var piramide_usuario = window.localStorage.getItem("piramide_usuario");
 var grupo_usuario = window.localStorage.getItem("grupo_usuario");
 var filtros = window.localStorage.getItem("filtros");
 
-$("#logoVivo").fadeIn(2,function(){$(this).fadeOut(2,function(){layout();});});
+$("#logoVivo").fadeIn(2000,function(){$(this).fadeOut(2000,function(){layout();});});
 function layout(){
 	$('.linhaNome').slideDown(1000,function(){
 		$('.entrada').fadeIn(1000);
