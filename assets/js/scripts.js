@@ -23,7 +23,6 @@ function layout(){
 function inicio(){
 	for(i=0;i<ordem.length;i++){
 		if(eval(ordem[i])=='null' || eval(ordem[i])==null || eval(ordem[i])==undefined){
-			alert('lista')
 			Lista(ordem[i],msg[i]);
 			return true;
 		}

@@ -3,19 +3,17 @@ require_once('Conexao.class.php');
 class Combos extends Conexao{
 	private static $filtros;
 	public function __construct($filtros=''){
-		if($filtros!=''){
-			self::$filtros=substr($filtros,4);
-		}else{
-			self::$filtros='';
-		}
+		self::$filtros=$filtros;
 	}
 	private function getCombo($nomeCampoDestino){
 		$filtros=self::$filtros;
+
 		if($filtros!=''){
-			$filtros=' where ' . $filtros;
+			$filtros=' where ' . substr($filtros,4);
 		}
 
 		$sqlstr="select distinct $nomeCampoDestino from tbl_registros_online $filtros";
+		//echo $sqlstr;
 		$sqlstr=$this->runSql($sqlstr);
 		return $sqlstr;
 	}
