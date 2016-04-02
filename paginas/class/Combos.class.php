@@ -1,0 +1,34 @@
+<?
+require_once('Conexao.class.php');
+class Combos extends Conexao{
+	private static $filtros;
+	public function __construct($filtros=''){
+		if($filtros!=''){
+			self::$filtros=substr($filtros,4);
+		}else{
+			self::$filtros='';
+		}
+	}
+	private function getCombo($nomeCampoDestino){
+		$filtros=self::$filtros;
+		if($filtros!=''){
+			$filtros=' where ' . $filtros;
+		}
+
+		$sqlstr="select distinct $nomeCampoDestino from tbl_registros_online $filtros";
+		$sqlstr=$this->runSql($sqlstr);
+		return $sqlstr;
+	}
+	public function getHtmlCombo($nomeCampoDestino,$msg){
+		$html='<div class="row listaCabecalho"><div class="col-xs-12 text-center">' . $msg . '</div></div>';
+		$sqlstr=$this->getCombo($nomeCampoDestino);
+		while($row=mysqli_fetch_array($sqlstr)){
+			$html.='<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-default btn-lg btn-block" onclick="addFiltro(\''. $nomeCampoDestino .'\',this.innerText)">' . $row[$nomeCampoDestino] . '</button></div></div>';
+		}
+		if($nomeCampoDestino!='segmento_usuario'){
+			$html.='<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">REINICIAR</button></div></div>';
+		}
+		return $html;
+	}
+}
+?>
