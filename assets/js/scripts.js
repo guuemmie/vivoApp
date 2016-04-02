@@ -6,7 +6,7 @@ var segmento_usuario='null';
 var piramide_usuario='null';
 var grupo_usuario='null';
 var filtros = 'nda';
-
+var versao='1.0';
 
 var segmento_usuario = window.localStorage.getItem("segmento_usuario");
 var piramide_usuario = window.localStorage.getItem("piramide_usuario");
@@ -15,12 +15,37 @@ if(window.localStorage.getItem("filtros")){
 	filtros = window.localStorage.getItem("filtros");
 }
 
-$("#logoVivo").fadeIn(2,function(){$(this).fadeOut(2,function(){layout();});});
+$("#logoVivo").fadeIn(2000,function(){$(this).fadeOut(2000,function(){layout();});});
 function layout(){
 	$('.linhaNome').slideDown(1000,function(){
 		$('.entrada').fadeIn(1000);
-		inicio();
+		fnVersao(versao);
+		//inicio();
 	})
+}
+function fnVersao(v){
+	// VERIFICAR SE A VERSÃO É A VERSÃO ATUAL DO APP
+	$.ajax({
+	  method: "POST",
+	  crossDomain: true,
+	  data: {
+	  	versao:v
+	  }
+	  ,url: "http://multimsg.tempsite.ws/appvivo/versao.php"
+	  ,beforeSend: function() {
+	  		$('#conteudo').fadeIn('fast',function(){
+	  			$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificando versão</div></div>');
+	  		})
+	  		
+	  }
+	}).done(function( html ) {
+			if(v==html){
+				$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>');
+				inicio();
+			}else{
+				$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Existe uma versão mais recente, por favor baixe novamente o app.</div></div>');
+			}
+	});
 }
 function inicio(){
 	for(i=0;i<ordem.length;i++){
