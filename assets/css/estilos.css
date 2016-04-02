@@ -45,6 +45,7 @@ div > span > div > div > a, div > span > div > div > a:hover{
 }
 body{
 	background-color: #efefef;
+	font-family: lato-regular;
 }
 .fonteNormal{
 	font-family: lato-regular;
@@ -83,6 +84,7 @@ body{
 	color: #0066cb;
 	height: 60px;
 }
-#conteudo{
-
+#palitagens-online{
+	font-size: 40px;
+	font-family: lato-bold;
 }

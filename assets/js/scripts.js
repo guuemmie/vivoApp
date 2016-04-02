@@ -73,20 +73,35 @@ function reiniciarFiltro(){
 
 	inicio();
 }
+function carregarInformacoes(){
+	//setTimeout(function, 60000);
+		$.ajax({
+			  method: "POST",
+			  crossDomain: true,
+			  data: {
+			  	filtros: filtros
+			  },
+			  dataType: "json",
+			  url: "http://multimsg.tempsite.ws/appvivo/palitagens.php"
+		}).done(function( json ) {
+			$('#palitagens-online').html(json.palitagensOnline);
+			//$('#conteudo').fadeIn('slow');
+		});
+}
 function iniciarInformacao(){
 	$('#conteudo').load('info-online.html',function(){
 		$.ajax({
 			  method: "POST",
 			  crossDomain: true,
-			 /* data: {
-			  	campoDestino:campoDestino
-			  	,msg: msg
-			  	,filtros: filtros
-			  }*/
+			  data: {
+			  	filtros: filtros
+			  },
+			  dataType: "json",
 			  url: "http://multimsg.tempsite.ws/appvivo/palitagens.php"
-		}).done(function( html ) {
-			$('#palitagens-online').html(html);
+		}).done(function( json ) {
+			$('#palitagens-online').html(json.palitagensOnline);
 			$('#conteudo').fadeIn('slow');
+			setTimeout(carregarInformacoes, 300000);
 		});
 	})
 	
