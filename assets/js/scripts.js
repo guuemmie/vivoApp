@@ -84,7 +84,12 @@ function carregarInformacoes(){
 			  dataType: "json",
 			  url: "http://multimsg.tempsite.ws/appvivo/palitagens.php"
 		}).done(function( json ) {
+
 			$('#palitagens-online').html(json.palitagensOnline);
+
+			// GERAR GRÁFICOS DE COMPARAÇÃO ONLINE
+			var dados = [['Palitagens', 'Quantidade'],["D-7",parseInt(json.palitagensD7)],["Ontem",parseInt(json.palitagensD1)],["Hoje",parseInt(json.palitagensOnline)]];
+			barra(dados);
 			//$('#conteudo').fadeIn('slow');
 		});
 }
@@ -104,35 +109,18 @@ function iniciarInformacao(){
 			$('#gru').html(grupo_usuario);
 			$('#palitagens-online').html(json.palitagensOnline);
 			$('#conteudo').fadeIn('slow');
+
+			// GERAR GRÁFICOS DE COMPARAÇÃO ONLINE			
+			var dados = [['Palitagens', 'Quantidade'],["D-7",parseInt(json.palitagensD7)],["Ontem",parseInt(json.palitagensD1)],["Hoje",parseInt(json.palitagensOnline)]];
+			google.charts.load('current', {'packages':['bar']});
+			barra(dados);
+			
+
 			setTimeout(carregarInformacoes, 300000);
+		
 		});
 	})
 	
 	//$('#conteudo').html('<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">FILTROS</button></div></div><div class="row"><div class="col-xs-12"> </div></div>').fadeIn('slow');
-	/*google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['Effort', 'Amount given'],
-          ['My all',     50],
-          ['My sal',     50]
-        ]);
-
-        var options = {
-          pieHole: 0.5,
-          pieSliceTextStyle: {
-            color: '#ffffff',
-          },
-          backgroundColor: 'transparent',
-          slices: {
-            0: { color: '#0066cb' },
-            1: { color: 'transparent' }
-          },
-          legend: 'none'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
-        chart.draw(data, options);
-      }*/
+	
 }

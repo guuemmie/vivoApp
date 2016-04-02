@@ -7,7 +7,6 @@ class Combos extends Conexao{
 	}
 	private function getCombo($nomeCampoDestino){
 		$filtros=self::$filtros;
-		//echo $filtros . '--';
 		if($filtros=='nda'){
 			$where='';
 		}else{
@@ -15,7 +14,6 @@ class Combos extends Conexao{
 		}
 
 		$sqlstr="select distinct $nomeCampoDestino from tbl_registros_online $where";
-		//echo $sqlstr;
 		$sqlstr=$this->runSql($sqlstr);
 		return $sqlstr;
 	}
