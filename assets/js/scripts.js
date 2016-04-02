@@ -29,7 +29,7 @@ function inicio(){
 			return true;
 		}
 	}
-	//iniciarInformacao();
+	iniciarInformacao();
 }
 function Lista(campoDestino,msg){
 	$.ajax({

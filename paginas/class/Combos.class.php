@@ -7,15 +7,15 @@ class Combos extends Conexao{
 	}
 	private function getCombo($nomeCampoDestino){
 		$filtros=self::$filtros;
-		echo $filtros . '--';
-		if($filtros!='nda'){
-			$where=' where ' . substr($filtros,7);
-		}else{
+		//echo $filtros . '--';
+		if($filtros=='nda'){
 			$where='';
+		}else{
+			$where=' where ' . substr($filtros,7);
 		}
 
 		$sqlstr="select distinct $nomeCampoDestino from tbl_registros_online $where";
-		echo $sqlstr;
+		//echo $sqlstr;
 		$sqlstr=$this->runSql($sqlstr);
 		return $sqlstr;
 	}
