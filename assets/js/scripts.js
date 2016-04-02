@@ -17,17 +17,12 @@ $("#logoVivo").fadeIn(2000,function(){$(this).fadeOut(2000,function(){layout();}
 function layout(){
 	$('.linhaNome').slideDown(1000,function(){
 		$('.entrada').fadeIn(1000);
-		alert('inicio');
 		inicio();
 	})
 }
 function inicio(){
-	alert(ordem.length);
 	for(i=0;i<ordem.length;i++){
-		alert(eval(ordem[i]));
-		alert(eval(ordem[i])=='null');
-		alert(eval(ordem[i])==null);
-		if(eval(ordem[i])=='null'){
+		if(eval(ordem[i])=='null' || eval(ordem[i])==null || eval(ordem[i])==undefined){
 			alert('lista')
 			Lista(ordem[i],msg[i]);
 			return true;
