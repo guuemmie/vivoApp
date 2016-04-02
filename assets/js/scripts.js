@@ -2,6 +2,8 @@
 var ordem = new Array('segmento_usuario','piramide_usuario','grupo_usuario');
 var msg = new Array('Selecione o segmento','Selecione a pirâmide','Selecione o grupo');
 
+google.charts.load('current', {'packages':['bar']});
+
 var segmento_usuario='null';
 var piramide_usuario='null';
 var grupo_usuario='null';
@@ -40,7 +42,7 @@ function fnVersao(v){
 	  }
 	}).done(function( html ) {
 			if(v==html){
-				$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>');
+				$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>').fadeOut('fast');
 				inicio();
 			}else{
 				$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Existe uma versão mais recente, por favor baixe novamente o app.</div></div>');
@@ -137,7 +139,6 @@ function iniciarInformacao(){
 
 			// GERAR GRÁFICOS DE COMPARAÇÃO ONLINE			
 			var dados = [['Palitagens', 'Quantidade'],["D-7",parseInt(json.palitagensD7)],["Ontem",parseInt(json.palitagensD1)],["Hoje",parseInt(json.palitagensOnline)]];
-			google.charts.load('current', {'packages':['bar']});
 			barra(dados);
 			
 
