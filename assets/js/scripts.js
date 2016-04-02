@@ -99,6 +99,9 @@ function iniciarInformacao(){
 			  dataType: "json",
 			  url: "http://multimsg.tempsite.ws/appvivo/palitagens.php"
 		}).done(function( json ) {
+			$('#seg').html(segmento_usuario);
+			$('#pir').html(piramide_usuario);
+			$('#gru').html(grupo_usuario);
 			$('#palitagens-online').html(json.palitagensOnline);
 			$('#conteudo').fadeIn('slow');
 			setTimeout(carregarInformacoes, 300000);
