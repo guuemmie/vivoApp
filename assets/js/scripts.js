@@ -43,6 +43,7 @@ function Lista(campoDestino,msg){
 	  		$('#conteudo').fadeOut('fast');
 	  }
 	}).done(function( html ) {
+		alert(html);
 		$('#conteudo').html(html).fadeIn('slow');
 	});
 }
