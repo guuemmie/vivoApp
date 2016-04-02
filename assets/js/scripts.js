@@ -17,12 +17,16 @@ $("#logoVivo").fadeIn(2000,function(){$(this).fadeOut(2000,function(){layout();}
 function layout(){
 	$('.linhaNome').slideDown(1000,function(){
 		$('.entrada').fadeIn(1000);
+		alert('inicio');
 		inicio();
 	})
 }
 function inicio(){
+	alert(ordem.length);
 	for(i=0;i<ordem.length;i++){
+		alert(eval(ordem[i]))
 		if(eval(ordem[i])=='null'){
+			alert('lista')
 			Lista(ordem[i],msg[i]);
 			return true;
 		}
@@ -43,7 +47,6 @@ function Lista(campoDestino,msg){
 	  		$('#conteudo').fadeOut('fast');
 	  }
 	}).done(function( html ) {
-		alert(html);
 		$('#conteudo').html(html).fadeIn('slow');
 	});
 }
