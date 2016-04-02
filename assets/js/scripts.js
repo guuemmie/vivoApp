@@ -74,8 +74,24 @@ function reiniciarFiltro(){
 	inicio();
 }
 function iniciarInformacao(){
-	$('#conteudo').html('<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">FILTROS</button></div></div><div class="row"><div class="col-xs-12"> <div id="donut_single"></div></div></div>').fadeIn('slow');
-	google.charts.load('current', {'packages':['corechart']});
+	$('#conteudo').load('info-online.html',function(){
+		$.ajax({
+			  method: "POST",
+			  crossDomain: true,
+			 /* data: {
+			  	campoDestino:campoDestino
+			  	,msg: msg
+			  	,filtros: filtros
+			  }*/
+			  url: "http://multimsg.tempsite.ws/appvivo/palitagens.php"
+		}).done(function( html ) {
+			$('#palitagens-online').html(html);
+			$('#conteudo').fadeIn('slow');
+		});
+	})
+	
+	//$('#conteudo').html('<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">FILTROS</button></div></div><div class="row"><div class="col-xs-12"> </div></div>').fadeIn('slow');
+	/*google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
       function drawChart() {
 
@@ -100,5 +116,5 @@ function iniciarInformacao(){
 
         var chart = new google.visualization.PieChart(document.getElementById('donut_single'));
         chart.draw(data, options);
-      }
+      }*/
 }
