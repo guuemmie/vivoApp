@@ -5,7 +5,7 @@ var msg = new Array('Selecione o segmento','Selecione a pirâmide','Selecione o 
 var segmento_usuario='null';
 var piramide_usuario='null';
 var grupo_usuario='null';
-var filtros = 'null';
+var filtros = '0';
 
 
 var segmento_usuario = window.localStorage.getItem("segmento_usuario");
@@ -59,12 +59,12 @@ function reiniciarFiltro(){
 	segmento_usuario='null';
 	piramide_usuario='null';
 	grupo_usuario='null';
-	filtros = 'null';
+	filtros = '0';
 
 	window.localStorage.setItem('segmento_usuario', 'null');
 	window.localStorage.setItem('piramide_usuario', 'null');
 	window.localStorage.setItem('grupo_usuario', 'null');
-	window.localStorage.setItem('filtros', 'null');
+	window.localStorage.setItem('filtros', '0');
 
 	inicio();
 }
