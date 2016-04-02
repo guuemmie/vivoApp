@@ -24,7 +24,9 @@ function layout(){
 function inicio(){
 	alert(ordem.length);
 	for(i=0;i<ordem.length;i++){
-		alert(eval(ordem[i]))
+		alert(eval(ordem[i]));
+		alert(eval(ordem[i])=='null');
+		alert(eval(ordem[i])==null);
 		if(eval(ordem[i])=='null'){
 			alert('lista')
 			Lista(ordem[i],msg[i]);
