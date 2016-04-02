@@ -6,7 +6,12 @@ require_once('class/Combos.class.php');
 
 $campoDestino=$_POST['campoDestino'];
 $msg=$_POST['msg'];
-$filtros=$_POST['filtros'];
+if(isset($_POST['filtros'])){
+	$filtros=$_POST['filtros'];
+}else{
+	$filtros='';
+}
+
 $combos=new Combos($filtros);
 //echo $campoOrigem.$campoDestino.$valorOrigem.$msg; exit();
 $html='<div class="col-xs-12">';
