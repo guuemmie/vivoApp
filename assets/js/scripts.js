@@ -71,5 +71,5 @@ function reiniciarFiltro(){
 	inicio();
 }
 function iniciarInformacao(){
-	$('#conteudo').html('<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">REINICIAR</button></div></div>').fadeIn('slow');
+	$('#conteudo').html('<div class="row lista"><div class="col-xs-12 text-center"><button type="button" class="btn btn-primary btn-lg btn-block" onclick="reiniciarFiltro()">INICIO DO GRAFICO</button></div></div>').fadeIn('slow');
 }
