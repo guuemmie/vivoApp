@@ -60,13 +60,7 @@ function permissao(){
 	if(dvc.length<2){
 		startScan();
 	}
-	alert(verificaPremissao(dvc));
-	if(verificaPremissao(dvc)){
-		alert('iniciado')
-		inicio();
-	}else{
-		$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Sem permissão: ' + dvc + '</div></div>').fadeIn('fast');
-	}
+	verificaPremissao(dvc);
 }
 function verificaPremissao(dvc){
 	resposta=false;
@@ -82,10 +76,10 @@ function verificaPremissao(dvc){
 	  }
 	}).done(function( html ) {
 		if(html=='1'){
-			$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>').fadeIn('fast');
-			resposta=true;
+			$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>').fadeOut('fast');
+			inicio();
 		}else{
-			resposta=false;
+			$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Sem permissão: ' + dvc + '</div></div>').fadeIn('fast');
 		}
 	});
 	return resposta;
