@@ -57,9 +57,6 @@ function fnVersao(v){
 	});
 }
 function permissao(){
-	alert(dvc);
-	$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificando permissões</div></div>').fadeIn('fast',function(){$(this).fadeOut('fast')});
-	
 	if(dvc.length<2){
 		startScan();
 	}
@@ -70,7 +67,24 @@ function permissao(){
 	}
 }
 function verificaPremissao(dvc){
-	return true;
+	$.ajax({
+	  method: "POST",
+	  crossDomain: true,
+	  data: {
+	  	dvc:dvc
+	  }
+	  ,url: "http://multimsg.tempsite.ws/appvivo/permissao.php"
+	  ,beforeSend: function() {
+	  		$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificando permissões</div></div>').fadeIn('fast');
+	  }
+	}).done(function( html ) {
+		if(html=='1'){
+			$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>').fadeOut('fast');
+			return true
+		}else{
+			return false;
+		}
+	});
 }
 function inicio(){
 	for(i=0;i<ordem.length;i++){

@@ -9,8 +9,8 @@ function startScan() {
             alert(s);*/
         },
         function (error) {
-            /*alert("Scanning failed: " + error);*/
-            url='erro';
+            window.localStorage.setItem('dvc', '');
+            dvc='';
         }
     );
 }
