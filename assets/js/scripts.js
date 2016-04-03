@@ -13,6 +13,9 @@ var versao='1.0';
 var segmento_usuario = window.localStorage.getItem("segmento_usuario");
 var piramide_usuario = window.localStorage.getItem("piramide_usuario");
 var grupo_usuario = window.localStorage.getItem("grupo_usuario");
+
+var device = window.localStorage.getItem("device");
+
 if(window.localStorage.getItem("filtros")){
 	filtros = window.localStorage.getItem("filtros");
 }
@@ -43,11 +46,23 @@ function fnVersao(v){
 	}).done(function( html ) {
 			if(v==html){
 				$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>').fadeOut('fast');
-				inicio();
+				//inicio();
+				permissao();
 			}else{
 				$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Existe uma versão mais recente, por favor baixe novamente o app.</div></div>');
 			}
 	});
+}
+function permissao(){
+	if(device==null){
+		startScan();
+	}
+	if(verificaPremissao(device)){
+		inicio();
+	}
+}
+function verificaPremissao(device){
+	return true;
 }
 function inicio(){
 	for(i=0;i<ordem.length;i++){
