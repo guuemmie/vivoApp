@@ -55,6 +55,7 @@ function fnVersao(v){
 }
 function permissao(){
 	if(device.length<2){
+		alert('scan')
 		startScan();
 	}
 	if(verificaPremissao(device)){
