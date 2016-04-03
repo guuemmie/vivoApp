@@ -1,15 +1,17 @@
 function startScan() {
 
-    cordova.plugins.barcodeScanner.scan(
+    var url = cordova.plugins.barcodeScanner.scan(
         function (result) {
-            var s = "Result: " + result.text + "<br/>" +
+            /*var s = "Result: " + result.text + "<br/>" +
             "Format: " + result.format + "<br/>" +
             "Cancelled: " + result.cancelled;
-            alert(s);
+            alert(s);*/
+            return result.text
         },
         function (error) {
-            alert("Scanning failed: " + error);
+            /*alert("Scanning failed: " + error);*/
+
         }
     );
-
+    alert(url);
 }
