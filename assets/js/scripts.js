@@ -9,14 +9,14 @@ var piramide_usuario='null';
 var grupo_usuario='null';
 var filtros = 'nda';
 var versao='1.0';
-var device ='';
+var dvc ='';
 
 var segmento_usuario = window.localStorage.getItem("segmento_usuario");
 var piramide_usuario = window.localStorage.getItem("piramide_usuario");
 var grupo_usuario = window.localStorage.getItem("grupo_usuario");
 
-if(window.localStorage.getItem("device")){
-	device = window.localStorage.getItem("device");
+if(window.localStorage.getItem("dvc")){
+	dvc = window.localStorage.getItem("dvc");
 }
 
 if(window.localStorage.getItem("filtros")){
@@ -57,18 +57,18 @@ function fnVersao(v){
 	});
 }
 function permissao(){
-	alert(device);
+	alert(dvc);
 	$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificando permissões</div></div>').fadeIn('fast',function(){$(this).fadeOut('fast')});
 	
-	if(device.length<2){
+	if(dvc.length<2){
 		alert('scan')
 		startScan();
 	}
-	if(verificaPremissao(device)){
+	if(verificaPremissao(dvc)){
 		inicio();
 	}
 }
-function verificaPremissao(device){
+function verificaPremissao(dvc){
 	return true;
 }
 function inicio(){
