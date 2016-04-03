@@ -63,7 +63,7 @@ function permissao(){
 	if(verificaPremissao(dvc)){
 		inicio();
 	}else{
-		$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Sem permissão.</div></div>').fadeIn('fast');
+		$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Sem permissão: ' + dvc + '</div></div>').fadeIn('fast');
 	}
 }
 function verificaPremissao(dvc){
