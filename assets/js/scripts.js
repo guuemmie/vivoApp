@@ -61,11 +61,12 @@ function permissao(){
 	$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificando permissões</div></div>').fadeIn('fast',function(){$(this).fadeOut('fast')});
 	
 	if(dvc.length<2){
-		alert('scan')
 		startScan();
 	}
 	if(verificaPremissao(dvc)){
 		inicio();
+	}else{
+		$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Sem permissão.</div></div>').fadeIn('fast');
 	}
 }
 function verificaPremissao(dvc){
