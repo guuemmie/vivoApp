@@ -9,12 +9,15 @@ var piramide_usuario='null';
 var grupo_usuario='null';
 var filtros = 'nda';
 var versao='1.0';
+var device ='';
 
 var segmento_usuario = window.localStorage.getItem("segmento_usuario");
 var piramide_usuario = window.localStorage.getItem("piramide_usuario");
 var grupo_usuario = window.localStorage.getItem("grupo_usuario");
 
-var device = window.localStorage.getItem("device");
+if(window.localStorage.getItem("device")){
+	device = window.localStorage.getItem("device");
+}
 
 if(window.localStorage.getItem("filtros")){
 	filtros = window.localStorage.getItem("filtros");
