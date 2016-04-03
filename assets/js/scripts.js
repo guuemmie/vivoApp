@@ -54,6 +54,9 @@ function fnVersao(v){
 	});
 }
 function permissao(){
+	alert(device);
+	$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificando permissões</div></div>').fadeIn('fast',function(){$(this).fadeOut('fast')});
+	
 	if(device.length<2){
 		alert('scan')
 		startScan();
