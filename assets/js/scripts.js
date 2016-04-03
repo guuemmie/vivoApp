@@ -60,9 +60,12 @@ function permissao(){
 	if(dvc.length<2){
 		startScan();
 	}
+	alert(verificaPremissao(dvc));
 	if(verificaPremissao(dvc)){
+		alert('iniciado')
 		inicio();
 	}else{
+		alert('bloqueado')
 		$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Sem permissão: ' + dvc + '</div></div>').fadeIn('fast');
 	}
 }
@@ -80,7 +83,7 @@ function verificaPremissao(dvc){
 	}).done(function( html ) {
 		if(html=='1'){
 			$('#conteudo').html('<div class="row"><div class="col-xs-12 text-center">Verificado</div></div>').fadeIn('fast');
-			return true
+			return true;
 		}else{
 			return false;
 		}
