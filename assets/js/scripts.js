@@ -54,7 +54,7 @@ function fnVersao(v){
 	});
 }
 function permissao(){
-	if(!device){
+	if(device.length<2){
 		startScan();
 	}
 	if(verificaPremissao(device)){
