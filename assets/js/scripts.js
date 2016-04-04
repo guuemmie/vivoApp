@@ -148,6 +148,12 @@ function carregarInformacoes(){
 		}).done(function( json ) {
 
 			$('#palitagens-online').html(json.palitagensOnline);
+			htmlOper='';
+			for(i=0;i<json.topOperadores.length;i++){
+				htmlOper+='<tr><td>' + json.topOperadores[i].cpf +'</td><td>' + json.topOperadores[i].tt +'</td></tr>';
+			}
+
+			$('#topOperadores').html('<table class="table-responsive table-Bordered"><tr><td><strong>CPF</strong></td><td><strong>Palitagens</strong></td></tr>' + htmlOper + '</table>')
 
 			// GERAR GRÁFICOS DE COMPARAÇÃO ONLINE
 			var dados = [['Palitagens', 'Quantidade'],["D-7",parseInt(json.palitagensD7)],["Ontem",parseInt(json.palitagensD1)],["Hoje",parseInt(json.palitagensOnline)]];
@@ -171,6 +177,12 @@ function iniciarInformacao(){
 			$('#gru').html(grupo_usuario);
 			$('#palitagens-online').html(json.palitagensOnline);
 			$('#conteudo').fadeIn('slow');
+			htmlOper='';
+			for(i=0;i<json.topOperadores.length;i++){
+				htmlOper+='<tr><td>' + json.topOperadores[i].cpf +'</td><td>' + json.topOperadores[i].tt +'</td></tr>';
+			}
+
+			$('#topOperadores').html('<table class="table-responsive table-Bordered"><tr><td><strong>CPF</strong></td><td><strong>Palitagens</strong></td></tr>' + htmlOper + '</table>')
 
 			// GERAR GRÁFICOS DE COMPARAÇÃO ONLINE			
 			var dados = [['Palitagens', 'Quantidade'],["D-7",parseInt(json.palitagensD7)],["Ontem",parseInt(json.palitagensD1)],["Hoje",parseInt(json.palitagensOnline)]];

@@ -29,13 +29,32 @@ class Palitagens extends Conexao{
 		$sqlstr=$this->runSQL($sqlstr);
 		return $sqlstr;
 	}
+	private function topOperadores(){
+		$filtros=self::$filtros;
+		$filtros=substr($filtros, 8);
+		$sqlstr="select cpf_usuario,count(*) tt from tbl_registros_online where data>=DATE_FORMAT(now(),'%Y-%m-%d') and $filtros group by cpf_usuario order by 2 desc limit 20";
+		$sqlstr=$this->runSQL($sqlstr);
+		return $sqlstr;
+	}
 	public function info(){
 		
 		$quantOnline=number_format(mysqli_fetch_array($this->quantidadeOnline())['tt'],0,'','');
 		$quantD1=number_format(mysqli_fetch_array($this->quantidadeD1())['tt'],0,'','');
 		$quantD7=number_format(mysqli_fetch_array($this->quantidadeD7())['tt'],0,'','');
+		
+		/*$arrOper=array();
+		$row=mysqli_fetch_array($this->topOperadores());
+		for($i=0;$i<mysqli_num_rows($this->topOperadores());$i++){
+			array_push($arrOper, Array('cpf'=>$row['cpf_usuario'],'tt'=>$row['tt']));
+		}*/
+		$arrOper=array();
+		$op=$this->topOperadores();
+		while($row=mysqli_fetch_array($op)){
+			array_push($arrOper, Array('cpf'=>$row['cpf_usuario'],'tt'=>$row['tt']));
+		}
 
-		$arr=array('palitagensOnline'=>$quantOnline,'palitagensD1'=>$quantD1,'palitagensD7'=>$quantD7);
+		
+		$arr=array('palitagensOnline'=>$quantOnline,'palitagensD1'=>$quantD1,'palitagensD7'=>$quantD7,'topOperadores'=>$arrOper);
 		return json_encode($arr);
 	}
 }
