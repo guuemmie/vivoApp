@@ -7,6 +7,7 @@ function startScan() {
             "Format: " + result.format + "<br/>" +
             "Cancelled: " + result.cancelled;
             alert(s);*/
+            inicio();
         },
         function (error) {
             window.localStorage.setItem('dvc', '');

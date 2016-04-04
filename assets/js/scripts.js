@@ -59,8 +59,9 @@ function fnVersao(v){
 function permissao(){
 	if(dvc.length<2){
 		startScan();
+	}else{
+		verificaPremissao(dvc);
 	}
-	verificaPremissao(dvc);
 }
 function verificaPremissao(dvc){
 	resposta=false;
