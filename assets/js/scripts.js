@@ -57,6 +57,8 @@ function fnVersao(v){
 	});
 }
 function permissao(){
+	ga_storage._trackPageview('/index', 'Permissao');
+	ga_storage._trackPageview('/index.html', 'optional title');
 	if(dvc.length<2){
 		startScan();
 	}else{
