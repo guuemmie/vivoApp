@@ -26,6 +26,7 @@
     <preference name="android-installLocation" value="auto" />
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="com.phonegap.plugins.barcodescanner" version="1.1.0" />
+    <plugin name="com.analytics.google" spec="1.2.2" source="pgb" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="res/icon/android/icon-48-mdpi.png" />
