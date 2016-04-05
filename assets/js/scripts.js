@@ -18,6 +18,7 @@ var grupo_usuario = window.localStorage.getItem("grupo_usuario");
 //CHAMA A FUNÇÃO PARA O ANALYTICS
 analytics();
 
+
 if(window.localStorage.getItem("dvc")){
 	dvc = window.localStorage.getItem("dvc");
 }
