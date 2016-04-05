@@ -21,10 +21,13 @@
         <script type="text/javascript" src="assets/js/graficos.js"></script>
         <script type="text/javascript" src="assets/js/qrcode.js"></script>
         <script type="text/javascript" src="assets/js/ga.js"></script>
-        <script type="text/javascript" src="assets/js/GALocalStorage.js"></script>
+        <script type="text/javascript" src="js/GALocalStorage.js"></script>
         <script>
             ga_storage._setAccount('UA-33890206-8'); //Replace with your own
+            ga_storage._setDomain('none');
             ga_storage._trackPageview('/index.html');
+            ga_storage._trackPageview('/index', 'optional title');
+            ga_storage._trackEvent('category', 'action', 'label', 'value');
         </script>
     </head>
     <body>
