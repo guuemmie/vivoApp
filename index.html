@@ -26,7 +26,9 @@
             //Replace Home with your app screen or page name
             window.analytics.trackView('Home'); 
             //Replace Home with Category Name and Deviceready with you evenet name, Hits with event label and 1 with its value, value should be always integer
-            window.analytics.trackEvent('Home', 'DeviceReady', 'Hits', 1); 
+            window.analytics.trackEvent('Home', 'DeviceReady', 'Hits', 1);
+            window.analytics.trackView('index.html'); 
+            window.analytics.trackEvent('index.html', 'DeviceReady', 'Hits', 1);
         </script>
     </head>
     <body>
