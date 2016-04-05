@@ -8,7 +8,7 @@ var segmento_usuario='null';
 var piramide_usuario='null';
 var grupo_usuario='null';
 var filtros = 'nda';
-var versao='1.0.1';
+var versao='1.1';
 var dvc ='';
 
 var segmento_usuario = window.localStorage.getItem("segmento_usuario");
