@@ -15,9 +15,6 @@ var segmento_usuario = window.localStorage.getItem("segmento_usuario");
 var piramide_usuario = window.localStorage.getItem("piramide_usuario");
 var grupo_usuario = window.localStorage.getItem("grupo_usuario");
 
-//CHAMA A FUNÇÃO PARA O ANALYTICS
-analytics();
-
 
 if(window.localStorage.getItem("dvc")){
 	dvc = window.localStorage.getItem("dvc");
@@ -36,6 +33,8 @@ function layout(){
 	})
 }
 function fnVersao(v){
+	// Analytics
+	analytics();
 	// VERIFICAR SE A VERSÃO É A VERSÃO ATUAL DO APP
 	$.ajax({
 	  method: "POST",
@@ -206,6 +205,6 @@ function analytics(){
 	$.ajax({
 	  method: "POST",
 	  crossDomain: true
-	  ,url: "http://multimsg.tempsite.ws/appvivo/analitics_app.php"
+	  ,url: "http://multimsg.tempsite.ws/appvivo/analytics_app.php"
 	})
 }
