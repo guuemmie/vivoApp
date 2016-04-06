@@ -36,12 +36,17 @@ class Palitagens extends Conexao{
 		$sqlstr=$this->runSQL($sqlstr);
 		return $sqlstr;
 	}
+	private function UltimaAtualizacao(){
+		$sqlstr="select DATE_FORMAT(max(data),'%H:%i') as dataAtualizacao from tbl_registros_online";
+		$sqlstr=$this->runSQL($sqlstr);
+		return $sqlstr;
+	}
 	public function info(){
 		
 		$quantOnline=number_format(mysqli_fetch_array($this->quantidadeOnline())['tt'],0,'','');
 		$quantD1=number_format(mysqli_fetch_array($this->quantidadeD1())['tt'],0,'','');
 		$quantD7=number_format(mysqli_fetch_array($this->quantidadeD7())['tt'],0,'','');
-		
+		$UltimaAtualizacao=mysqli_fetch_array($this->UltimaAtualizacao())['dataAtualizacao'];
 		/*$arrOper=array();
 		$row=mysqli_fetch_array($this->topOperadores());
 		for($i=0;$i<mysqli_num_rows($this->topOperadores());$i++){
@@ -54,7 +59,7 @@ class Palitagens extends Conexao{
 		}
 
 		
-		$arr=array('palitagensOnline'=>$quantOnline,'palitagensD1'=>$quantD1,'palitagensD7'=>$quantD7,'topOperadores'=>$arrOper);
+		$arr=array('palitagensOnline'=>$quantOnline,'palitagensD1'=>$quantD1,'palitagensD7'=>$quantD7,'topOperadores'=>$arrOper,'UltimaAtualizacao'=>$UltimaAtualizacao);
 		return json_encode($arr);
 	}
 }
